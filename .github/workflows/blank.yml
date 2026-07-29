@@ -1,4 +1,4 @@
-name: Java CI Matrix Test
+name: Matrix Test
 
 on:
   pull_request:
@@ -17,12 +17,14 @@ jobs:
         working-directory: ./StudentApp
 
     steps:
+      - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: ${{ matrix.java-version }}
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
 
-      - name: Run Maven Tests
+      - name: Run tests
         run: mvn test
