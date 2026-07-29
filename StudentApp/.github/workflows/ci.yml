@@ -1,0 +1,13 @@
+name: maven test
+on:
+  pull_request:
+
+jobs:
+  build:
+    uses: action/setup-java@v4
+    uses: action/checkout@v4
+    maxtrix_strategy:
+      run: mvn clean
+      run: mvn compile
+      run: mvn test
+      run: mvn package
